@@ -1,4 +1,4 @@
-# 🖥️ Active Directory Lab – Windows Server 2025
+# Active Directory Lab – Windows Server 2025
 
 This repository contains the technical implementation of my multi-part Active Directory lab series, originally published on Medium. The lab simulates a modern enterprise Windows environment using:
 
@@ -10,15 +10,15 @@ This repository contains the technical implementation of my multi-part Active Di
 
 ---
 
-## 📚 Full Walkthrough
+## Full Walkthrough
 
 You can read the full lab guide on Medium:
 
-👉 [Active Directory Lab Series on Medium](https://medium.com/@botgonbayar)
+ [Active Directory Lab Series on Medium](https://medium.com/@botgonbayar)
 
 ---
 
-## 🧪 Lab Breakdown
+## Lab Breakdown
 
 - [Part 1 – Installation & Setup](Part1_Setup.md)
 - [Part 2 – AD Configuration & GPOs](Part2_Configuration.md)
@@ -26,6 +26,6 @@ You can read the full lab guide on Medium:
 
 ---
 
-## 💻 Scripts
+## Scripts
 
 All PowerShell scripts used throughout the lab are included in the [`scripts/`](scripts/) folder.
