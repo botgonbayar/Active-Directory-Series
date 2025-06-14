@@ -11,7 +11,7 @@ This section outlines the setup of the lab environment including Windows Server 
 - **IP Range**: 192.168.100.0/24
 - **Domain Controller (DC)**: `Secora-DC01` – 192.168.100.10
 - **Client Machines**: Windows 11 – 192.168.100.20–30
-- **Domain Name**: `secora.lab`
+- **Domain Name**: `secora.local`
 
 ---
 
