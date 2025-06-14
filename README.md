@@ -14,7 +14,7 @@ This repository contains the technical implementation of my multi-part Active Di
 
 You can read the full lab guide on Medium:
 
- [Active Directory Lab Series on Medium](https://medium.com/@botgonbayar)
+ [Active Directory Series - Part 1](https://medium.com/@botgonbayar)
 
 ---
 
