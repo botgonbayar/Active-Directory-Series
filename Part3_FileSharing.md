@@ -1,4 +1,4 @@
-# 📁 Part 3: File Sharing and Access Management
+# 📁 Part 3 Preview: File Sharing and Access Management
 
 This section covers creating shared folders for departments, assigning NTFS and share-level permissions to security groups, and managing service accounts for task automation.
 
