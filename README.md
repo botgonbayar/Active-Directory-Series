@@ -1,4 +1,4 @@
-# Active Directory Lab – Windows Server 2025
+# Active Directory Project – Windows Server 2025
 
 This repository contains the technical implementation of my multi-part Active Directory lab series, originally published on Medium. The lab simulates a modern enterprise Windows environment using:
 
