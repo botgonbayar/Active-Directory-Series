@@ -1,3 +1,4 @@
+Preview
 # 🛠️ Part 2: AD Users, OUs, Groups, and GPO Configuration
 
 In this section, we create Organizational Units, add user accounts and groups, and apply Group Policy Objects (GPOs) to manage security and configurations.
