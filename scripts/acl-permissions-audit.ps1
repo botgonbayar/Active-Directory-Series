@@ -1,3 +1,17 @@
+.DESCRIPTION
+    This function recursively scans one or more folder paths, collects access control information 
+    (like who has access, permission level, and inheritance), and saves everything into a CSV.
+    It also prints a quick summary to the console — total audited items, unique users, full control entries, 
+    and any potential external access.
+
+.EXAMPLE
+    # Run with custom folders and save report to D:\Reports
+    Get-AccessControlAudit -FolderPaths "D:\HR", "D:\Finance" -OutputPath "D:\Reports\HR_Audit.csv"
+
+.NOTES
+    # Make sure you run this with appropriate permissions (e.g., as an admin) to access all subfolders.
+    # Helpful for security audits, compliance checks, or spotting unexpected access.
+
 function Get-AccessControlAudit {
     param(
         # List of folder paths you want to audit. You can add or remove paths as needed.
