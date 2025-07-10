@@ -12,7 +12,6 @@
     - You’ll need to run this as an administrator to access the Security event log.
     - Use Excel or Power BI to analyze the CSV further.
     - For more targeted filtering (specific users, computers, etc.), add additional conditions to the filter hashtable.
-#>
 
 # Query the Security log for successful logon (4624) and logoff (4634) events from the past 7 days
 $Events = Get-WinEvent -FilterHashtable @{
