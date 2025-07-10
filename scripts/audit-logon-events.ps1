@@ -1,27 +1,37 @@
 .DESCRIPTION
-    This script looks for Event ID 4624 (logon) and 4634 (logoff) from the Security log over the past 7 days. 
-    It extracts useful details like time, event ID, and message content — and then exports everything to a CSV file.
-
-    Great for investigating user activity, login trends, or detecting suspicious behavior.
-
-.EXAMPLE
-    # Run the script to collect logon/logoff data from the past 7 days
-    .\Get-LogonEvents.ps1
+    This function searches the Windows Security log for specific Event IDs (default is 4624 for logon and 4634 for logoff),
+    starting from a specified number of days ago. It captures basic details like the timestamp, event ID, and message content,
+    then saves the results to a CSV file for further analysis.
 
 .NOTES
-    - You’ll need to run this as an administrator to access the Security event log.
-    - Use Excel or Power BI to analyze the CSV further.
-    - For more targeted filtering (specific users, computers, etc.), add additional conditions to the filter hashtable.
+    - Must be run with administrator privileges to access the Security event log.
+    - Useful for investigations, compliance reports, or login activity reviews.
+#>
 
-# Query the Security log for successful logon (4624) and logoff (4634) events from the past 7 days
-$Events = Get-WinEvent -FilterHashtable @{
-    LogName = 'Security'
-    ID = @(4624, 4634)
-    StartTime = (Get-Date).AddDays(-7)  # Only go back 7 days
-} | Select-Object TimeCreated, Id, Message  # Only grab the useful fields for reporting
+function Get-LogonEvents {
+    param(
+        [int]$DaysBack = 7,  # How far back to go in the event log
+        [int[]]$EventIDs = @(4624, 4634),  # Default to logon and logoff events
+        [string]$OutputPath = ".\logon-events_$(Get-Date -Format 'yyyyMMdd').csv"  # Default filename
+    )
 
-# Export the results to a CSV file in the current directory
-$Events | Export-Csv .\logon-events.csv -NoTypeInformation
+    # Let the user know what’s happening
+    Write-Host "Querying Security event log for Event IDs $($EventIDs -join ', ') from the last $DaysBack days..." -ForegroundColor Cyan
 
-# Let the user know it’s done
-Write-Output "Exported recent logon/logoff events to logon-events.csv"
+    try {
+        # Build the filter to get the events
+        $Events = Get-WinEvent -FilterHashtable @{
+            LogName = 'Security'
+            ID = $EventIDs
+            StartTime = (Get-Date).AddDays(-$DaysBack)
+        } | Select-Object TimeCreated, Id, Message
+
+        # Export the results to CSV
+        $Events | Export-Csv -Path $OutputPath -NoTypeInformation
+
+        Write-Host "Success! Exported $($Events.Count) events to $OutputPath" -ForegroundColor Green
+    }
+    catch {
+        Write-Warning "Failed to retrieve or export events. Error: $_"
+    }
+}
